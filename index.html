@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRACU Diganta CanSat Learning Kit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #f5f5f5;
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0ff;
+    }
+
+    h2 {
+      margin: 0.8rem 0 0.4rem;
+      padding-left: 0.8rem;
+      font-size: 1.1rem;
+      color: #0ff;
+      border-left: 3px solid #0ff;
+    }
+
+    /* Command buttons */
+    .buttons {
+      padding: 0.6rem;
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      flex-wrap: wrap; /* force one row */
+    }
+
+    button {
+      flex: 1 1 auto;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      transition: transform 0.15s, background 0.3s;
+      white-space: nowrap; /* prevent text wrap */
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+  .deploy { background: #e63946; color: #fff; }
+  .deploy:hover { background: #b82c37; }
+  
+  .calibrate { background: #06d6a0; color: #111; }
+  .calibrate:hover { background: #049a75; }
+  
+  .log { background: #457b9d; color: #fff; }
+  .log:hover { background: #356184; }
+  
+  .reset { background: #f4a261; color: #111; }
+  .reset:hover { background: #d4843c; }
+  
+  .switch { background: #9b5de5; color: #fff; }
+  .switch:hover { background: #7a3dc8; }
+  
+  .payload { background: #f9c74f; color: #111; }
+  .payload:hover { background: #d4a437; }
+
+    /* Sensor Data */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .card {
+      background: #1c1c1c;
+      padding: 0.4rem;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .card h3 {
+      font-size: 0.75rem;
+      margin-bottom: 0.2rem;
+      color: #0ff;
+    }
+
+    .card p {
+      font-size: 0.75rem;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    /* GPS Data rows */
+    .gps-rows {
+      padding: 0.5rem 1rem;
+    }
+
+    .gps-row {
+      background: #1c1c1c;
+      margin: 0.3rem 0;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <header>🚀 BRACU Diganta CanSat Learning Kit</header>
+
+  <!-- Command Buttons -->
+  <h2>🎛️ Commands</h2>
+  <section class="buttons">
+    <button class="deploy antenna" onclick="sendCommand('deploy antenna')">Deploy Antenna</button>
+    <button class="calibrate" onclick="sendCommand('calibrate')">Calibrate</button>
+    <button class="log" onclick="sendCommand('log')">Log</button>
+    <button class="reset" onclick="sendCommand('reset')">Reset</button>
+    <button class="switch" onclick="sendCommand('sensor on')">Sensor On</button>
+    <button class="payload" onclick="sendCommand('payload on')">Payload</button>
+  </section>
+
+  <!-- Sensor Data -->
+  <h2>📊 Sensor Data</h2>
+  <section class="grid">
+    <div class="card"><h3>Altitude</h3><p id="altitude">123 m</p></div>
+    <div class="card"><h3>Temperature</h3><p id="temperature">28 °C</p></div>
+    <div class="card"><h3>Pressure</h3><p id="pressure">997 hPa</p></div>
+    <div class="card"><h3>Humidity</h3><p id="humidity">54%</p></div>
+    <div class="card"><h3>Battery</h3><p id="battery">84%</p></div>
+    <div class="card"><h3>Compass</h3><p id="compass">N</p></div>
+  </section>
+
+  <!-- GPS Data -->
+  <h2>🛰️ GPS Data</h2>
+  <section class="gps-rows">
+    <div class="gps-row">Latitude: <span id="lat">23.77308</span></div>
+    <div class="gps-row">Longitude: <span id="lon">	90.423942</span></div>
+    <div class="gps-row">Altitude: <span id="gps-alt">54.5 m</span></div>
+    <div class="gps-row">Satellites: <span id="sats">4</span></div>
+    <div class="gps-row">Time (UTC): <span id="time">2025/08/30, 11:36:34</span></div>
+  </section>
+
+  <script>
+    function sendCommand(cmd) {
+      alert("Command sent: " + cmd);
+      // later replace with ESP32 fetch/WebSocket
+    }
+
+
+  </script>
+</body>
+</html>
